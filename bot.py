@@ -141,4 +141,3 @@ schedule.every().monday.at("6:00").do(change_even_week())
 while True:
     schedule.run_pending()
     time.sleep(1)
-
