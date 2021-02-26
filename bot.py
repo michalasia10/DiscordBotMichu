@@ -56,6 +56,7 @@ KOMENDY = {
     "!calendall": "Wyświetla wszystkie zapisane rzeczy w kalendarzu",
     "!show YYYY-MM-DD": "Wyświetla rzeczy zapisane w kalendarzu na dany dzień'",
     "!calend title: tekst YYYY-MM-DD description: tekst": "Zapisuje wydarzenie z opisem na dany dzień do kalendarza",
+    "!delcal YYYY-MM-DD": "Usuwa cały dzień z kalendarza",
 }
 
 def change_even_week():
