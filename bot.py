@@ -108,6 +108,29 @@ def save_calendar(message):
     except:
         return False
 
+def delete_calendar(message):
+    tekst = message.content
+    regex = re.compile('\d{4}-\d{2}-\d{2}')
+    tekstList = tekst.split(' ')
+    try:
+        if regex.match(tekstList[1]):
+            indexDate = [index for index, i in enumerate(tekstList) if regex.match(i)][0]
+            date = tekstList[indexDate]
+            jsonFile = open("calendar.json", "r")  # Open the JSON file for reading
+            data = json.load(jsonFile)  # Read the JSON into the buffer
+            jsonFile.close()
+            print(date in data)
+            if date in data:
+                del data[date]
+                jsonFile = open("calendar.json", "w+")
+                jsonFile.write(json.dumps(data))
+                jsonFile.close()
+                return True
+            else:
+                return False
+    except:
+        return False
+
 
 @client.event
 async def on_ready():
@@ -179,6 +202,11 @@ async def on_message(message):
             for title,desc in calendar.items():
                 embed.add_field(name=f'{title}',value=f'{desc}')
             await message.channel.send(embed=embed)
+        elif '!delcal' in message.content and regex.match(tekstList[1]):
+            if delete_calendar(message):
+                await message.channel.send("Dzień usunięty")
+            else:
+                await message.channel.send("Coś jest nie tak")
         elif message.content == '!calendall':
             jsonFile = open("calendar.json", "r")
             data = json.load(jsonFile)
