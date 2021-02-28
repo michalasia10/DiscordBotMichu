@@ -164,7 +164,7 @@ async def on_message(message):
             )
             embed.add_field(name="Poniedziałek", value=PLAN["Poniedziałek"])
             embed.add_field(name="Wtorek", value=PLAN["Wtorek"])
-            embed.add_field(name="Środek", value=PLAN["Środa"])
+            embed.add_field(name="Środa", value=PLAN["Środa"])
             embed.add_field(name="Czwartek", value=PLAN["Czwartek"])
             embed.add_field(name="Piątek", value=PLAN["Piątek"])
             await message.channel.send(embed=embed)
